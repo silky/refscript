@@ -6,7 +6,7 @@ class Foo {
   /*@ a : [Immutable] number */
   a;
 
-  /*@ new (x: number) => { v: Foo<M> | offset(v,"a") = x } */
+  /*@ new (x: number) => { v: Foo<M> | offset(v,"a") ~~ x } */
   constructor(x) { this.a = x }
 
   /*@ bar : (x: {number | v = this.a}) : {number | v = 0} */
