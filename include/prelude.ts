@@ -903,7 +903,8 @@ declare function builtin_OpIn(s: string, obj: Object): boolean;
 /*@ qualif Cmp(v:number, x:number): v >  x */
 /*@ qualif Cmp(v:number, x:number): v >= x */
 
-/*@ qualif Cmp(v:a,x:a): v =  x */
+/*  qualif Cmp(v:a,x:a): v =  x */
+/*@ qualif Cmp(v:a,x:a): v ~~ x */
 /*@ qualif Cmp(v:a,x:a): v != x */
 /*  qualif True(v:boolean): (v) */
 /*  qualif False(v:boolean): (not v) */
