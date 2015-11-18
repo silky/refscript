@@ -399,21 +399,21 @@ declare var Number: {
     new (value: any): Number;						// new (value?: any): Number;
     <A>(value: A): number;							// (value?: any): number;
     prototype: Number;
-
-    /*  MAX_VALUE: { number | v = numeric_max_value } */
-    MAX_VALUE: number;
-
-    /*  MIN_VALUE: { number | v = numeric_min_value } */
-    MIN_VALUE: number;
-
-    /*  NaN: { number | v = numeric_nan } */
-    NaN: number;
-
-    /*  NEGATIVE_INFINITY: { number | v = numeric_negative_infinity } */
-    NEGATIVE_INFINITY: number;
-
-    /*  POSITIVE_INFINITY: { number | v = numeric_positive_infinity } */
-    POSITIVE_INFINITY: number;
+    //
+    // /*  MAX_VALUE: { number | v = numeric_max_value } */
+    // MAX_VALUE: number;
+    //
+    // /*  MIN_VALUE: { number | v = numeric_min_value } */
+    // MIN_VALUE: number;
+    //
+    // /*  NaN: { number | v = numeric_nan } */
+    // NaN: number;
+    //
+    // /*  NEGATIVE_INFINITY: { number | v = numeric_negative_infinity } */
+    // NEGATIVE_INFINITY: number;
+    //
+    // /*  POSITIVE_INFINITY: { number | v = numeric_positive_infinity } */
+    // POSITIVE_INFINITY: number;
 }
 
 
@@ -426,14 +426,14 @@ declare var Number: {
  */
 
 interface Math {
-    E: number;
-    LN10: number;
-    LN2: number;
-    LOG2E: number;
-    LOG10E: number;
-    PI: number;
-    SQRT1_2: number;
-    SQRT2: number;
+    // E: number;
+    // LN10: number;
+    // LN2: number;
+    // LOG2E: number;
+    // LOG10E: number;
+    // PI: number;
+    // SQRT1_2: number;
+    // SQRT2: number;
     abs(x: number): number;
     acos(x: number): number;
     asin(x: number): number;
@@ -733,35 +733,35 @@ declare var Function: {
     prototype: Function;
 }
 
-
-/*** Console ************************************************************/
-interface Console {
-    info(message?: any, ...optionalParams: any[]): void;
-    warn(message?: any, ...optionalParams: any[]): void;
-    error(message?: any, ...optionalParams: any[]): void;
-    log(message?: any, ...optionalParams: any[]): void;
-    profile(reportName?: string): void;
-    assert(test?: boolean, message?: string, ...optionalParams: any[]): void;
-    //msIsIndependentlyComposed(element: Element): boolean;
-    clear(): void;
-    dir(value?: any, ...optionalParams: any[]): void;
-    profileEnd(): void;
-    count(countTitle?: string): void;
-    groupEnd(): void;
-    time(timerName?: string): void;
-    timeEnd(timerName?: string): void;
-    trace(): void;
-    group(groupTitle?: string): void;
-    dirxml(value: any): void;
-    debug(message?: string, ...optionalParams: any[]): void;
-    groupCollapsed(groupTitle?: string): void;
-    //select(element: Element): void;
-}
-declare var Console: {
-    prototype: Console;
-    new(): Console;
-}
-declare var console: Console;
+//
+// /*** Console ************************************************************/
+// interface Console {
+//     info(message?: any, ...optionalParams: any[]): void;
+//     warn(message?: any, ...optionalParams: any[]): void;
+//     error(message?: any, ...optionalParams: any[]): void;
+//     log(message?: any, ...optionalParams: any[]): void;
+//     profile(reportName?: string): void;
+//     assert(test?: boolean, message?: string, ...optionalParams: any[]): void;
+//     //msIsIndependentlyComposed(element: Element): boolean;
+//     clear(): void;
+//     dir(value?: any, ...optionalParams: any[]): void;
+//     profileEnd(): void;
+//     count(countTitle?: string): void;
+//     groupEnd(): void;
+//     time(timerName?: string): void;
+//     timeEnd(timerName?: string): void;
+//     trace(): void;
+//     group(groupTitle?: string): void;
+//     dirxml(value: any): void;
+//     debug(message?: string, ...optionalParams: any[]): void;
+//     groupCollapsed(groupTitle?: string): void;
+//     //select(element: Element): void;
+// }
+// declare var Console: {
+//     prototype: Console;
+//     new(): Console;
+// }
+// declare var console: Console;
 
 
 
@@ -983,7 +983,7 @@ interface InheritedMut {
 
 
 // TRY OUT offset
-/*@ measure offset :: forall A . (x:A, y:string) => B */
+/*@ measure offset :: forall A . (x:A, y:string) => number */
 
 
 /*************************************************************************

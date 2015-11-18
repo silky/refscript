@@ -48,7 +48,7 @@ module NavierStokes {
 
     /*@ checkResult :: ({v:IArray<number> | (len v) = (128+2) * (128+2)}) => void */
     function checkResult(dens) {
-    
+
         var _lemma = mulThm130(130);
         var result = 0;
         for (var i=7000;i<7100;i++) {
@@ -136,12 +136,12 @@ module NavierStokes {
         private displayFunc: (f:Field) => void;
 
         /*@ uiCallback : ({v:Field<Mutable> | offset(v,"w") = this.width && offset(v,"h") = this.height}) => void */
-        private uiCallback = function(field:Field) 
-            /*@ <anonymous> (Field<Mutable>)=>void */ 
+        private uiCallback = function(field:Field)
+            /*@ <anonymous> (Field<Mutable>)=>void */
             {};
 
-        /*@ new (canvas:top, 
-                 hRes:pos, 
+        /*@ new (canvas:top,
+                 hRes:pos,
                  wRes:{v:pos | hRes * v < 1000000}) => {v:FluidField<M> | offset(v,"width") = wRes && offset(v,"height") = hRes} */
         constructor(canvas, hRes, wRes) {
             var width = wRes;
@@ -172,13 +172,13 @@ module NavierStokes {
             this.visc = 1/2;//.
             this.dt = 1/10;//.
 
-            this.displayFunc = function(f:Field) 
-                /*@ <anonymous> (Field<Immutable>)=>void */ 
+            this.displayFunc = function(f:Field)
+                /*@ <anonymous> (Field<Immutable>)=>void */
                 {}; //ORIG: null
         }
 
-            /*@ addFields : (x:{v:IArray<number> | (len v) = this.size}, 
-                             s:{v:IArray<number> | (len v) = this.size}, 
+            /*@ addFields : (x:{v:IArray<number> | (len v) = this.size},
+                             s:{v:IArray<number> | (len v) = this.size},
                              dt:number) : void */
             addFields(x:number[], s:number[], dt:number)
             {
@@ -237,10 +237,10 @@ module NavierStokes {
                 x[(width+1)+maxEdge] = 1/2 * (x[width + maxEdge] + x[(width + 1) + height * rowSize]);//.
             }
 
-            /*@ lin_solve : (b :number, 
-                             x :{v:IArray<number> | (len v) = this.size}, 
-                             x0:{v:IArray<number> | (len v) = this.size}, 
-                             a :number, 
+            /*@ lin_solve : (b :number,
+                             x :{v:IArray<number> | (len v) = this.size},
+                             x0:{v:IArray<number> | (len v) = this.size},
+                             a :number,
                              c :{v:number | v != 0}) : void */
             lin_solve(b:number, x:number[], x0:number[], a:number, c:number)
             {
@@ -281,9 +281,9 @@ module NavierStokes {
                 }
             }
 
-            /*@ diffuse : (b :number, 
-                           x :{v:IArray<number> | (len v) = this.size}, 
-                           x0:{v:IArray<number> | (len v) = this.size}, 
+            /*@ diffuse : (b :number,
+                           x :{v:IArray<number> | (len v) = this.size},
+                           x0:{v:IArray<number> | (len v) = this.size},
                            dt:number) : void */
             diffuse(b:number, x:number[], x0:number[], dt:number)
             {
@@ -291,11 +291,11 @@ module NavierStokes {
                 this.lin_solve(b, x, x0, a, 1 + 4*a);
             }
 
-            /*@ lin_solve2 : (x :{v:IArray<number> | (len v) = this.size}, 
-                              x0:{v:IArray<number> | (len v) = this.size}, 
-                              y :{v:IArray<number> | (len v) = this.size}, 
-                              y0:{v:IArray<number> | (len v) = this.size}, 
-                              a :number, 
+            /*@ lin_solve2 : (x :{v:IArray<number> | (len v) = this.size},
+                              x0:{v:IArray<number> | (len v) = this.size},
+                              y :{v:IArray<number> | (len v) = this.size},
+                              y0:{v:IArray<number> | (len v) = this.size},
+                              a :number,
                               c :{v:number | v != 0}) : void */
             lin_solve2(x:number[], x0:number[], y:number[], y0:number[], a:number, c:number)
             {
@@ -342,10 +342,10 @@ module NavierStokes {
                 }
             }
 
-            /*@ diffuse2 : (x :{v:IArray<number> | (len v) = this.size}, 
-                            x0:{v:IArray<number> | (len v) = this.size}, 
-                            y :{v:IArray<number> | (len v) = this.size}, 
-                            y0:{v:IArray<number> | (len v) = this.size}, 
+            /*@ diffuse2 : (x :{v:IArray<number> | (len v) = this.size},
+                            x0:{v:IArray<number> | (len v) = this.size},
+                            y :{v:IArray<number> | (len v) = this.size},
+                            y0:{v:IArray<number> | (len v) = this.size},
                             dt:number) : void */
             diffuse2(x:number[], x0:number[], y:number[], y0:number[], dt:number)
             {
@@ -353,11 +353,11 @@ module NavierStokes {
                 this.lin_solve2(x, x0, y, y0, a, 1 + 4 * a);
             }
 
-            /*@ advect : (b :number, 
-                          d :{v:IArray<number> | (len v) = this.size}, 
-                          d0:{v:IArray<number> | (len v) = this.size}, 
-                          u :{v:IArray<number> | (len v) = this.size}, 
-                          v :{v:IArray<number> | (len v) = this.size}, 
+            /*@ advect : (b :number,
+                          d :{v:IArray<number> | (len v) = this.size},
+                          d0:{v:IArray<number> | (len v) = this.size},
+                          u :{v:IArray<number> | (len v) = this.size},
+                          v :{v:IArray<number> | (len v) = this.size},
                           dt:number) : void */
             advect(b:number, d:number[], d0:number[], u:number[], ww:number[], dt:number)
             {
@@ -401,9 +401,9 @@ module NavierStokes {
                 this.set_bnd(b, d);
             }
 
-            /*@ project : (u  :{v:IArray<number> | (len v) = this.size}, 
-                           v  :{v:IArray<number> | (len v) = this.size}, 
-                           p  :{v:IArray<number> | (len v) = this.size}, 
+            /*@ project : (u  :{v:IArray<number> | (len v) = this.size},
+                           v  :{v:IArray<number> | (len v) = this.size},
+                           p  :{v:IArray<number> | (len v) = this.size},
                            div:{v:IArray<number> | (len v) = this.size}) : void */
             project(u:number[], ww:number[], p:number[], div:number[])
             {
@@ -453,10 +453,10 @@ module NavierStokes {
                 this.set_bnd(2, ww);
             }
 
-            /*@ dens_step : (x :{v:IArray<number> | (len v) = this.size}, 
-                             x0:{v:IArray<number> | (len v) = this.size}, 
-                             u :{v:IArray<number> | (len v) = this.size}, 
-                             v :{v:IArray<number> | (len v) = this.size}, 
+            /*@ dens_step : (x :{v:IArray<number> | (len v) = this.size},
+                             x0:{v:IArray<number> | (len v) = this.size},
+                             u :{v:IArray<number> | (len v) = this.size},
+                             v :{v:IArray<number> | (len v) = this.size},
                              dt:number) : void */
             dens_step(x:number[], x0:number[], u:number[], v:number[], dt:number)
             {
@@ -465,10 +465,10 @@ module NavierStokes {
                 this.advect(0, x, x0, u, v, dt );
             }
 
-            /*@ vel_step : (u :{v:IArray<number> | (len v) = this.size}, 
-                            v :{v:IArray<number> | (len v) = this.size}, 
-                            u0:{v:IArray<number> | (len v) = this.size}, 
-                            v0:{v:IArray<number> | (len v) = this.size}, 
+            /*@ vel_step : (u :{v:IArray<number> | (len v) = this.size},
+                            v :{v:IArray<number> | (len v) = this.size},
+                            u0:{v:IArray<number> | (len v) = this.size},
+                            v0:{v:IArray<number> | (len v) = this.size},
                             dt:number) : void */
             vel_step(u:number[], v:number[], u0:number[], v0:number[], dt:number)
             {
@@ -485,8 +485,8 @@ module NavierStokes {
                 this.project(u, v, u0, v0 );
             }
 
-            /*@ queryUI : (d:{v:IArray<number> | (len v) = this.size}, 
-                           u:{v:IArray<number> | (len v) = this.size}, 
+            /*@ queryUI : (d:{v:IArray<number> | (len v) = this.size},
+                           u:{v:IArray<number> | (len v) = this.size},
                            v:{v:IArray<number> | (len v) = this.size}) : void */
             queryUI(d:number[], u:number[], v:number[])
             {
@@ -494,9 +494,9 @@ module NavierStokes {
                     u[i] = 0; v[i] = 0; d[i] = 0;//.
                 }
                 this.uiCallback(new Field(this.rowSize, this.width, this.height, d, u, v));
-            } 
+            }
 
-            public update() 
+            public update()
             {
                 this.queryUI(this.dens_prev, this.u_prev, this.v_prev);
                 this.vel_step(this.u, this.v, this.u_prev, this.v_prev, this.dt);
@@ -507,15 +507,15 @@ module NavierStokes {
             public setDisplayFunction(f:(f:Field) => void) {
                 this.displayFunc = f;
             }
-            
+
             public iterations() { return this.iters; }
             /*@ setIterations : (this:FluidField<Mutable>, iters:number) : void */
-            public setIterations(iters:number) 
+            public setIterations(iters:number)
             {
                 if (iters > 0 && iters <= 100)
                     this.iters = iters;
             }
-            /*@ setUICallback : (this:FluidField<Mutable>, 
+            /*@ setUICallback : (this:FluidField<Mutable>,
                                  ({v:Field<Mutable> | offset(v,"w") = this.width && offset(v,"h") = this.height})=>void) : void */
             public setUICallback(callback:(f:Field) => void) {
                 this.uiCallback = callback;
@@ -547,9 +547,9 @@ module NavierStokes {
         /*@ v    : [Immutable] {v:IArray<number> | (len v) = (this.h + 2) * (this.w + 2)} */
         private v;
 
-        /*@ new (rowSize: {v:number | v = w+2}, 
-                 w:       pos, 
-                 h:       pos, 
+        /*@ new (rowSize: {v:number | v = w+2},
+                 w:       pos,
+                 h:       pos,
                  dens:    {v:IArray<number> | (len v) = (h+2) * (w+2)},
                  u:       {v:IArray<number> | (len v) = (h+2) * (w+2)},
                  v:       {v:IArray<number> | (len v) = (h+2) * (w+2)}) => {v:Field<M> | offset(v,"w") = w && offset(v,"h") = h } */
